@@ -40,5 +40,11 @@ public class CommentController {
         Page<Comment> comments = commentService.getCommentsByWish(wishId, pageable);
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
+    // 댓글을 소프트 삭제하는 엔드포인트
+    @DeleteMapping("/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
+        commentService.deleteComment(commentId);
+        return ResponseEntity.ok().build();
+    }
 
 }
