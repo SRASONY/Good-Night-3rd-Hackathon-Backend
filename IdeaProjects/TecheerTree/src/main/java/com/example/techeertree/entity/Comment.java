@@ -20,8 +20,8 @@ public class Comment {
     @JoinColumn(name = "wish_id", nullable = false)
     private Wish wish;
 
-    @Column(nullable = false)  // 이 필드가 필요합니다.
-    private Boolean isDeleted = false;
+    @Column(nullable = false)
+    private Boolean isDeleted = false;  // 댓글이 삭제되었는지 여부를 나타내는 필드
 
     // 기본 생성자
     public Comment() {}

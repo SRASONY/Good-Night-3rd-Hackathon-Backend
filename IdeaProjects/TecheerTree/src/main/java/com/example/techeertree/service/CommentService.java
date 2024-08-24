@@ -41,4 +41,13 @@ public class CommentService {
 
         return commentRepository.findByWishAndIsDeletedFalse(wish, pageable);
     }
+
+    // 댓글을 소프트 삭제하는 메서드
+    public void deleteComment(Long commentId) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Comment not found"));
+
+        comment.setIsDeleted(true); // 소프트 삭제 처리
+        commentRepository.save(comment); // 변경된 내용을 저장
+    }
 }
